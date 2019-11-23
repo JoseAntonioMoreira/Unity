@@ -1,4 +1,5 @@
-﻿using System.Collections;
+//Elemental gun that fires a single projectile or multiple ones  
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,10 +41,10 @@ public class Gun : MonoBehaviour
 
         //uncomment the element you want to use
 
-        if (Input.GetKeyUp(KeyCode.Mouse0))//rock and acid
+        if (Input.GetKeyUp(KeyCode.Mouse0))//rock
         {
-            //Rock();
-            Acid();
+            Rock();
+           
         }
 
 
@@ -85,19 +86,7 @@ public class Gun : MonoBehaviour
         pedra.GetComponent<Rigidbody>().velocity = (targetpoint - transform.position).normalized * 1000 * Time.deltaTime;
     }
 
-    void Acid()
-    {
-        var acido = Instantiate(acid, transform.position, transform.rotation);
-        acido.GetComponent<Rigidbody>().velocity = (targetpoint - transform.position).normalized * 1000 * Time.deltaTime;
-
-    }
-
-
-
-
-
-
-
+   
 
 
 
