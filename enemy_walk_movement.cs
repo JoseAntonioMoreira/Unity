@@ -1,4 +1,6 @@
-﻿using System.Collections;
+//This is a script for AI walking of a skeleton, the script creates a sphere around the GameObject and selects a random location.
+//After that the GameObject follows and when a timer reaches 0 it gives a new location again so the GameObject doesn't stop walking
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
