@@ -1,4 +1,6 @@
-﻿using System.Collections;
+//Basic player controller with a Dash, Sprint, Jump and gravity
+//Uses CharacterController
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
