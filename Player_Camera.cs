@@ -1,4 +1,5 @@
-﻿using System.Collections;
+//A basic camera script that makes the camera move closer to the player if there's a wall behind the player
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
