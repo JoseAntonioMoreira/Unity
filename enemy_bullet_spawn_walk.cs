@@ -1,4 +1,5 @@
-﻿using System.Collections;
+//This script is used for a enemy firing a GameObject towards the player
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
