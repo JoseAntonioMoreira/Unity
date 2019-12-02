@@ -1,13 +1,12 @@
-﻿using System.Collections;
+//This script sends a raycast that if hits a gameobject with the tag "pillar" it will create a raycast from there
+//It's like a mirror reflect for puzzles
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(LineRenderer))]
+
 public class Reflect : MonoBehaviour
 {
-
-    
-    private LineRenderer lr;
     private GameObject last_obj_hit;
 
 
@@ -26,15 +25,8 @@ public class Reflect : MonoBehaviour
     {
         isCasting = false;
     }
+    
 
-
-    void Start()
-    {
-        
-        lr = GetComponent<LineRenderer>();
-    }
-
-    // Update is called once per frame
     void Update()
     {
         
@@ -62,8 +54,6 @@ public class Reflect : MonoBehaviour
             {
                 last_obj_hit = hit.collider.gameObject;
                 position = hit.point;
-               /* lr.SetPosition(0, transform.position);
-                lr.SetPosition(1, position);*/
                 HasHit(hit.collider.gameObject);
                 Debug.DrawLine(startingPosition, position, Color.blue);
 
