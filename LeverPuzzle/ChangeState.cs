@@ -1,3 +1,4 @@
+////Changes the material of a light according if it's ON or OFF
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
