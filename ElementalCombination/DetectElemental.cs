@@ -1,4 +1,5 @@
 //Detect what elemental was put in what pedestal based on tags and enumerators
+//The scipt CheckCombination is the one that actually checks if the puzzle is solved
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
