@@ -1,3 +1,5 @@
+//Checks if all the elements have been placed correctly and gives the reward for solving the combination
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,12 +13,12 @@ public class CheckCombination : MonoBehaviour
 
   public void TryToOpen()
   {
-    if (hasAir && hasFire && hasEarth && hasWater)
+    if (hasAir && hasFire && hasEarth && hasWater)          //This is the condiction that checks is the puzzle as been solved
     {
       GetComponent<Animator>().SetBool("Opened", true);
       OnComplete?.Invoke();
     }
-    else
+    else                                                    //For reseting the reward if some of the keys is removed
       GetComponent<Animator>().SetBool("Opened", false);
 
   }
