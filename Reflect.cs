@@ -62,7 +62,7 @@ public class Reflect : MonoBehaviour
         else
         {
             position += direction * maxDistance;
-            Debug.DrawLine(startingPosition, position, Color.black);
+            //Debug.DrawLine(startingPosition, position, Color.black); ////Uncomment to check where the raycast is going
             StopHit(last_obj_hit);
         }
     }
