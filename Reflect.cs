@@ -71,7 +71,7 @@ public class Reflect : MonoBehaviour
     public void HasHit(GameObject obj)
     {
         obj.SendMessage("StartCasting");
-        Debug.Log("NOME do objecto: " + obj.name);
+        //Debug.Log("NOME do objecto: " + obj.name); ////Uncomment to check if the gameObject is being detected
         
     } 
 
