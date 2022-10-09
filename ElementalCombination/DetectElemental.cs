@@ -1,3 +1,4 @@
+//Detect what elemental was put in what pedestal based on tags and enumerators
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,11 +15,11 @@ public class DetectElemental : MonoBehaviour
     public CheckCombination checkCombination;
 
     [SerializeField]
-    private Elementals elementals;
+    private Elementals elementals;//Field to select what element will the gameObject be
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(elementals.ToString()))
+        if (other.gameObject.CompareTag(elementals.ToString())) //After placing the gameObject in the correct place the boolean of the said element will turn true 
         {
             switch (elementals)
             {
@@ -43,7 +44,7 @@ public class DetectElemental : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other) //If the gameObject in the correct place is removed the boolean will turn false
     {
         if (other.gameObject.CompareTag(elementals.ToString()))
         {
