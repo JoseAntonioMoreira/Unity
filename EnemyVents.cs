@@ -15,6 +15,19 @@ namespace Enemy
     private bool _ChangedVent = false;
     public bool ChangedVent { get => _ChangedVent; set => _ChangedVent = value; }
 
+    private NavMeshAgent agent;
+    public bool sortNextVent = true;
+
+    private void Start()
+    {
+      agent = GetComponent<NavMeshAgent>();
+    }
+
+    private void Update()
+    {
+      VentManager(agent);
+    }
+
     public void VentManager(NavMeshAgent agent)//function to chose a point based on the current location
     {
       if (null == _vent)//if the enemy hasn't picked a vent he should pick the nearest point to enter 
@@ -23,29 +36,29 @@ namespace Enemy
         _vent = CalculateClosestVent();
       }
 
-      if (agent.destination != _vent.transform.position)//if the enemy as chosen a point it will walk towards it
+      if (!sortNextVent)//After comming out of a point the enemy will do this action, for the example I put the enemy following a cube
       {
-        agent.SetDestination(_vent.transform.position);
-        agent.isStopped = false;
-      }
-
-      if (1f > Vector3.Distance(agent.transform.position, _vent.transform.position))//when the enemy reaches the point it should chose the next point, excluiding the current point
-      {
-        SpawnOnVent(agent,ChooseNextVent(_vent), 2f);
-      }
-    }
-
-    private GameObject CalculateClosestVent()//function that calculates the nearest point from the position of the enemy
-    {
-      GameObject closestVent = _vents[0];
-      foreach (GameObject vent in _vents)
-      {
-        if (Vector3.Distance(transform.position, vent.transform.position) < Vector3.Distance(transform.position, closestVent.transform.position))
+        agent.destination = cube.transform.position;
+        if (Vector3.Distance(transform.position, cube.transform.position) < 1)
         {
-          closestVent = vent;
+          sortNextVent = true;
+          _vent = CalculateClosestVent();
+        }
+
+      }
+      else
+      {
+        if (agent.destination != _vent.transform.position)//if the enemy as chosen a point it will walk towards it
+        {
+          agent.SetDestination(_vent.transform.position);
+          agent.isStopped = false;
+        }
+
+        if (1f > Vector3.Distance(agent.transform.position, _vent.transform.position))//when the enemy reaches the point it should chose the next point, excluiding the current point
+        {
+          SpawnOnVent(agent, ChooseNextVent(_vent), 2f);
         }
       }
-      return closestVent;
     }
 
     private GameObject ChooseNextVent(GameObject enteredVent)//function to chose the next point, excluding the current point
@@ -76,6 +89,7 @@ namespace Enemy
       agent.transform.position = leaveVent.transform.position;
       _vent = null;
       _ChangedVent = true;
+      sortNextVent = false;
     }
   }
 }
